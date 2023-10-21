@@ -9,7 +9,7 @@ __pycache__/
 # Distribution / packaging
 Pipfile
 Pipfile.lock
-.gitignore
+NotImages/
 .Python
 build/
 develop-eggs/
