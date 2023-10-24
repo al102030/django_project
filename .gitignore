@@ -11,6 +11,8 @@ Pipfile
 Pipfile.lock
 NotImages/
 .Python
+.DS_Store
+*.DS_Store
 build/
 develop-eggs/
 dist/
