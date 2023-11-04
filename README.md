@@ -125,4 +125,31 @@
   - Before migration creating a super user and entering to admin page is impossible
   - Explain the red error that shows after running server
   - First we should use <span style="color: Red;">makemigrations</span> command following <span style="color: Yellow;">'python manage.py'</span>
-  - Second we should use migra
+  - Second we should use <span style="color: Red;">migrate</span> command to create all essential and initial tables inside the database that have been created inside the default Django Database
+  - After that we can create our super user and log in as admin inside Django admin page
+  - In groups sections we can manage our admin users group
+  - In user section we can see all admin user of our site
+  - We can add a new user for test
+- <span style="color: Red;">Database</span>
+  - Django has its own <span style="color: Red;">ORM (Object Relational Mapper)</span> And its make it easy to access to our date base and easy to use it in Object Oriented way
+  - Its allows us to use different databases without changing our code
+  - We can represent our database structures as classes and we call that classes, <span style="color: Red;">Models</span>
+  - We define our models inside <span style="color: Red;">models.py</span> file in our blog app
+  - We can create all fields that we need for our entity inside of our database inside a model class
+  - Model classes inherit from models class in Django
+  - Actually we define all fields of our table using methods of models class
+  - <span style="color: Red;">Max_length</span> define the maximum number of characters that our field can have
+  - We use <span style="color: Red;">timezone</span> utility to be able to edit our DateTime field later
+  - We create a <span style="color: Red;">foreign key</span> for user field and make relationship between our Post table and User table
+  - We use <span style="color: Red;">on_delete</span> option to tell Django what happen to this posts, when the user who create this post gets deleted
+  - By using <span style="color: Red;">makemigrations</span> command, we apply all our changes to the database
+  - We can find migrations files inside migrations directory inside our blog app
+  - We can check all sql statement that Django used to build up our table inside database, by using this command: <span style="color: Red;">python manage.py sqlmigrate blog -migration name-</span> without postfix
+  - We can check and update our database using <span style="color: Orange;">shell</span> command following python manage.py
+  - Inside the shell environment we should import our User and Post models first (from blog.models import ...)
+  - <span style="color: Red;">"from django.contrib.auth.models import User"</span>
+  - We can check all objects in User table by this command: <span style="color: Red;">User.objects.all()</span> or ser.objects.first() or last() (for the last one)
+  - Also we can use filter() method base on the fields like user name
+  - <span style="color: Yellow;">User.objects.filter(username='testuser')</span> / .first()
+  - We can save queries in a variable and use it for checking its attributes
+  - We can get a user by its id : <span style="color: Yellow;">User.objects.get(id=1)</span>
