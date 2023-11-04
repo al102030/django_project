@@ -135,6 +135,7 @@
   - Its allows us to use different databases without changing our code
   - We can represent our database structures as classes and we call that classes, <span style="color: Red;">Models</span>
   - We define our models inside <span style="color: Red;">models.py</span> file in our blog app
+  - Django has its built-in user authentication system and we don't need to define user model
   - We can create all fields that we need for our entity inside of our database inside a model class
   - Model classes inherit from models class in Django
   - Actually we define all fields of our table using methods of models class
@@ -146,10 +147,31 @@
   - We can find migrations files inside migrations directory inside our blog app
   - We can check all sql statement that Django used to build up our table inside database, by using this command: <span style="color: Red;">python manage.py sqlmigrate blog -migration name-</span> without postfix
   - We can check and update our database using <span style="color: Orange;">shell</span> command following python manage.py
+  - Migration allows us to update our database after creation or put data in it
   - Inside the shell environment we should import our User and Post models first (from blog.models import ...)
   - <span style="color: Red;">"from django.contrib.auth.models import User"</span>
-  - We can check all objects in User table by this command: <span style="color: Red;">User.objects.all()</span> or ser.objects.first() or last() (for the last one)
+  - We can check all objects in User table by this command: <span style="color: Red;">User.objects.all()</span> or User.objects.first() or last() (for the last one)
   - Also we can use filter() method base on the fields like user name
   - <span style="color: Yellow;">User.objects.filter(username='testuser')</span> / .first()
   - We can save queries in a variable and use it for checking its attributes
   - We can get a user by its id : <span style="color: Yellow;">User.objects.get(id=1)</span>
+  - To create a post we can use <span style="color: Yellow;">post_1 = Post(...)</span> command and <span style="color: Yellow;">save</span> it finally
+  - In order to help our post model present itself better, we can add a magic method to our post model using dander sign
+  - To apply all changes and create backup we should exit shell and run it again
+  - Notice, after rerun shell we should create our user again
+  - After create two post we can save a post in a variable and show its attributes like **date_posted** / even user email (Its happened because foreign_key feature)
+  - Django has a feature that helps us to easily access to all posts of a user. <span style="color: Red;">\_set.all()</span>
+  - By using this feature we can create a new post for a specific user easily <span style="color: Red;">\_set.create(...)</span> / without specifying author
+  - Now we can use our database information instead of dumpy data by importing Post from models and send info to home.html
+  - We can use vertical bar to filter our date to a desirable form |date:"F d, Y"
+  - We can add our new post model to Django gui interface by register it in <span style="color: Red;">admin.py</span> file, using this code: <span style="color: Red;">admin.site.register(Post)</span>
+- <span style="color: Red;">User Registration</span>
+  - First of all we create a new app for our site users
+  - Register New app in django project settings
+  - Create view for our users app registration page
+  - Django make it easy to create a validation or insert value form.
+  - First we should create and register a new app (users)
+  - Then we should create a view for our registration page (using built-in features of THe Django)
+  - After that we need to create a template for our registration page inside the new app folder base on Django conventions
+  - We should extend our base.html templates there and get some nice style to it
+  - Now we need to make a url pattern for this registration page
