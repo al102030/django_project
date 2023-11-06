@@ -169,9 +169,36 @@
   - First of all we create a new app for our site users
   - Register New app in django project settings
   - Create view for our users app registration page
-  - Django make it easy to create a validation or insert value form.
+  - Django make it easy to create a validation or insert value form. (Django Built it automatically)
   - First we should create and register a new app (users)
   - Then we should create a view for our registration page (using built-in features of THe Django)
   - After that we need to create a template for our registration page inside the new app folder base on Django conventions
   - We should extend our base.html templates there and get some nice style to it
+  - We should add a <span style="color: Red;">csrf_token (Cross Site Request Forgery)</span> to our form to protect it from some kind of attacks
+  - Explain some Bootstrap css classes like <span style="color: Red;">mb-4</span> or <span style="color: Red;">pt-2</span>
   - Now we need to make a url pattern for this registration page
+  - We should import our users app views to our project urlpattern file and check it by running server.
+  - To make it better in style we should run our form elements as paragraph tag by using <span style="color: Red;">as_p</span> at end of our form name
+  - After that we should talk about HTTP methods and manage our form <span style="color: Red;">POST</span> requests
+  - Then we need to define variables to get form data clearly and show <span style="color: Red;">flash message(One time alert message)</span> by import <span style="color: Red;">messages</span> from Django. Here is the some of flash messages:
+    - messages.debug
+    - messages.info
+    - messages.success
+    - messages.warning
+    - messages.error
+  - After that we should redirect user to home page by importing <span style="color: Red;">redirect</span> method
+  - Before check the flash message we need to define it in our base.html file
+  - We should get message there and show it to user by Django For And if statements and Bootstrap
+  - By using <span style="color: Red;">save()</span> method we can save our new user
+  - To customize our user registration form we should built a new file in our user app root directory named <span style="color: Red;">forms.py</span> to make our desire form
+  - <span style="color: Red;">Meta class</span> actually gives us a nested namespace or configurations that says what model that would be effected and define which model would be effected and in what order
+  - To get a good and suitable shape to our form we use a third-party app name <span style="color: Red;">crispy-forms and crispy-bootstrap5</span> (first we should install it using pipenv) - after install we should register both of them in the Django settings file
+  - In register template we nee to load <span style="color: Red;">crispy_forms_tags</span>
+  - In page source we can check all bootstrap
+- <span style="color: Red;">Login and Logout System</span>
+  - Django provide views for us to handel Log in and Log out process
+  - We should import Django auth views for Login and Logout in project urls.py file
+  - By adding login and logout urlpatterns we can use these built-in forms
+  - We need to change Django default login and logout template location inside the <span style="color: Red;">as_view()</span>
+  - After creating login and logout html file inside the users app templates, we need to copy all codes inside the register template to these files
+  - After loading the login page we need to redirect page
