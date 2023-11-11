@@ -21,16 +21,16 @@ ul {
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #fe2626;
+  color: #26fe31;
 }
 
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
 
-.nav-right{
+/* .nav-right{
     margin-left: auto;
-}
+} */
 
 .content-section {
   background: #ffffff;

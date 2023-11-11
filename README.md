@@ -192,13 +192,36 @@
   - By using <span style="color: Red;">save()</span> method we can save our new user
   - To customize our user registration form we should built a new file in our user app root directory named <span style="color: Red;">forms.py</span> to make our desire form
   - <span style="color: Red;">Meta class</span> actually gives us a nested namespace or configurations that says what model that would be effected and define which model would be effected and in what order
-  - To get a good and suitable shape to our form we use a third-party app name <span style="color: Red;">crispy-forms and crispy-bootstrap5</span> (first we should install it using pipenv) - after install we should register both of them in the Django settings file
+  - To get a good and suitable shape to our form we use a third-party app name <span style="color: Red;">django-crispy-forms and django-crispy-bootstrap5</span> (first we should install it using pipenv) - after install we should register both of them in the Django settings file
   - In register template we nee to load <span style="color: Red;">crispy_forms_tags</span>
-  - In page source we can check all bootstrap
+  - In page **source** we can check all bootstrap
 - <span style="color: Red;">Login and Logout System</span>
   - Django provide views for us to handel Log in and Log out process
   - We should import Django auth views for Login and Logout in project urls.py file
+  - Before add template name to as_view() method, check login page in browser
+  - This built-in views doesn't work as normal debugger-write views
   - By adding login and logout urlpatterns we can use these built-in forms
   - We need to change Django default login and logout template location inside the <span style="color: Red;">as_view()</span>
   - After creating login and logout html file inside the users app templates, we need to copy all codes inside the register template to these files
-  - After loading the login page we need to redirect page
+  - We should change the urls in the log in and registration page to actual pages
+  - After loading the login page we need to redirect page, so check the log in before and then change it.
+  - To redirect user to userProfile(we add it later) or Home page we should add <span style="color: Red;">LOGIN_REDIRECT_URL</span> to the django project <span style="color: Red;">settings.py</span> file
+  - We need to redirect our user after registration to the login page, so we'll do it in <span style="color: Red;">user app view.py</span>
+  - Check the logout page by removing <span style="color: Yellow;">template_name</span> from as_vie() method, before change it to correct form
+  - We should create <span style="color: Red;">logout.html</span> file andd fill it with register.html content and change in context and urls
+  - After Creating LogIn, LogOut, and Register pages we need to change in our <span style="color: Red;">navigation bar</span> urls
+  - We need to define that if a user is log in, doesn't able to open login or register page
+  - Django make it easy for us by providing us with a user variable that contain current user
+  - It has an attribute called <span style="color: Red;">is_authenticated</span> and by using a <span style="color: Red;">if</span> statement for right navbar we can do it
+  - Before ending the login/logout section we need to restricted some part or pages of site that user can visit without being log in <span style="color: Red;">(user profile page)</span>
+  - We should create a view for profile page and its template inside user app templates (just a simple page that echo current user's username)
+  - Then we should add profile page url to project urlpattern
+  - We need to add profile page link to our navbar
+  - Check profile page when user is log out
+  - To restrict profile page we need to decorate our profile view by <span style="color: Red;"> login_required</span> decorator in users/views.py file (first need to import this decorator)
+  - To redirect user to log in page when user want to access to the profile page without being login we need to add <span style="color: Red;"> LOGIN_URL = 'login'</span> to project settings
+  - Check the url after restriction of accessoing to the profile page and explain Django keeping track of opening pages
+- <span style="color: Red;">User Profile and Picture</span>
+  - To add profile image to a user profile we need to extend user model that Django created by default
+  - to extend a model in user app we need to create a new model and inherit all features from models in Django
+  - create a class called <span style="color: Red;">Profile</span> inside <span style="color: Yellow;">users/models.py</span>
