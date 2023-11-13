@@ -224,4 +224,38 @@
 - <span style="color: Red;">User Profile and Picture</span>
   - To add profile image to a user profile we need to extend user model that Django created by default
   - to extend a model in user app we need to create a new model and inherit all features from models in Django
-  - create a class called <span style="color: Red;">Profile</span> inside <span style="color: Yellow;">users/models.py</span>
+  - Relation between user and profile is one-to-one relationship
+  - create a class called <span style="color: Red;">Profile</span> inside <span style="color: Yellow;">users/models.py</span> and firstly we need to extend our user model
+  - First we should make one-to-one relationship between User model and our Profile model and define <span style="color: Red;">CASCADE</span> variable for it
+  - After making relationship we can define any additional field that we want
+  - Explain <span style="color: Yellow;">default</span> and <span style="color: Yellow;">upload_to</span> variable
+  - It's better to define dander str \_\_str method to make a desire display for our Profile Instances
+  - After creating our model we need to migrate it to our database (Explain about initially Error)
+  - To work with images inside python programs we need to install <span style="color: Red;">Pillow</span> library
+  - First of all we should register this model within the admin file of our app
+  - Now we can add a new profile manually within the admin page
+  - Inside Django shell check that how can we access to these profile and images manually
+  - First import User model then create a user instance. After that we have a one-to-one relationship and can access to the profile
+  - Check image and its attributes and for default.jpg (user without image)
+  - Talk about profile_pics directory and the cause of its name and why we need to change the directory <span style="color: Red;">(MEDIA_ROOT and MEDIA_URL)</span>
+  - Delete the old profiles and profile_pics directory
+  - Use code snippets to add some code to the profile template in user app and display the user profile picture
+  - Check <span style="color: Orange;">Django managing static files documentation</span> and make some changes that the Django want, within the project urls.py
+  - Check the user that has no profile image and set a default image for this purpose (copy the default image within the media directory)
+  - To change our site to create a profile for each of our users automatically we need to create a signal
+  - Add <span style="color: Green;">signals.py</span> file to our user app directory
+  - Actually User is a signal sender and we need to define a function to receive the signal and perform some tasks <span style="color: #0088ff;">(import post_save, user, and receiver libraries)</span>
+  - Explain the sender and receiver collaboration process simply
+  - After the defining of sender and receiver we need to import our signals inside the <span style="color: Green;">ready</span> method within the app.py (user app)
+- <span style="color: Red;">Update User Profile</span>
+  - To update a user profile we need to some forms to get data and update it, so we need to create a model form that allows us to create a form that will work with a specific database model
+  - To add profile model to our update form we need to import it inside the file
+  - After creating <span style="color: #0088ff;">UserUpdateForm</span> and <span style="color: #0088ff;">ProfileUpdateForm</span> we need to import them inside our profile <span style="color: Orange">views.py</span> (user app) files
+  - We should <span style="color: #0088ff;">Instantiated</span> our user and profile update form and send them as <span style="color: Red;">context</span> to profile template file
+  - To use these forms inside template, it's better to use registration form code and after duplicate the <span style="color: Red;">{{form|crispy}}</span> part make it clear and appropriate
+  - To make it work properly we should add <span style="color: Red;">enctype</span> to our form tag
+  - To Show the current user data in the fields we need to send the to the page using the instance of them
+  - Then we need to check the request (POST) and if the user push the submit bottom update the fields
+  - After that we should save our forms if both are valid
+  - And we can send a success alert message to the user like registration form
+  -
