@@ -258,4 +258,45 @@
   - Then we need to check the request (POST) and if the user push the submit bottom update the fields
   - After that we should save our forms if both are valid
   - And we can send a success alert message to the user like registration form
+  - The profile Image Uploaded in actual size and we need to resize it automatically (Large images take a lot of space in server)
+  - <span style="color: #0088ff;">Pillow</span> allows us to resize the image through the uploading process
+  - We should update our <span style="color: Yellow;">user app model</span> <span style="color: Red;">(Save method should be overwrite in profile model)</span>
+  - First we need to give all functionality of our parent save() method to our overwrote method by <span style="color: Orange;">super()</span>
+  - After that we need to import <span style="color: #0088ff;">PIL(pillow)</span> to our file
+  - Now we should open our uploaded image instance and resize it and save it in same path
+  - We can add author image beside each post and to do that we should edit our <span style="color: Yellow;">blog app home</span> template
+- <span style="color: Red;">Create Update and Delete Posts</span>
+  - In our blog app to handel home and about page we used <span style="color: #0088ff;">function based views</span>
+  - There is a different kind of views called <span style="color: Red;">class based views</span> (there ate different kinds of class views like list vies, detail views, create views, etc.)
+  - We can convert our home function based view to a class view and see differences.(First import <span style="color: Yellow;">ListView</span>)
+  - We should create our <span style="color: #0088ff;">PostListView</span> class and it inherits everything from ListView class
+  - To tell our class that what model to query in order to create the list by creating an variable called <span style="color: Orange;">model</span>
+  - Now we need to make some changes inside <span style="color: Yellow;">blog urls.py</span> file to handel our new class based view
+  - First check the error in home page and tell about <span style="color: #0088ff;">certain naming pattern</span> for class based views
+  - Explain <span style="color: Red;">'\<app>/\<model>\_\<viewtype>.html'</span>
+  - To use our old template we should add a variable called <span style="color: #00ffff;">'template_name'</span> to our new view
+  - Inside the template we need a object list (**posts**) so we should send it from view by defining a new variable called <span style="color: #00ffff;">context_object_name</span>
+  - to change the order of the list objects in our view list we can use a variable called <span style="color: Orange;">ordering</span> (use '-' to descending order)
+  - Based on class based views to <span style="color: Orange;">create a individual page for each post</span> we can use <span style="color: Red;">detail view</span>
+  - After creating the <span style="color: Red;">PostDetailView</span> we should create a url pattern for it (import the view first)
+  - In this case we need to add variable to our url to separate each post <span style="color: #00ffff;">(.../3/) by its ID</span> (for doing this we can add a variable to view class as well)
+  - Now we need to create a template for our detail page based of **naming convention** (copy codes from home.html)
+  - After removing loop and link to each post by changing the post to object we can add <span style="color: #00ffff;">post/number_of_post</span> to url and see the detail of a specific post
+  - Then we can redirect user by clicking to the each post link to actual post detail page (check the hover)
+  - To create a create post view we should import this class first and make a url pattern for it
+  - Now we should create a template for our post create view (because of form we should copy all codes from <span style="color: Yellow;">register</span> template)
+  - Try to add a new post and face to error and explain it
+  - To solve th problem we should define a new function to add current user id to our new form instance (define <span style="color: Red;">form_valid()</span> method inside the create post view)
+  - Explain new error and and check the home page to see the new post (<span style="color: Red;">redirect</span> user to detail page after creating a new post)
+  - To tell the Django how to find the location of a specific post we need to make some changes in <span style="color: Red;">post model in blog app</span>
+  - We should use <span style="color: Red;">reverse()</span> method to do that (explain differences of reverse and redirect methods)
+  - To make a page unreachable for not registered users we use <span style="color: Green;">decorator</span> and to use this functionality in class based views we need the <span style="color: Red;">Login Mixin</span> (first import it in views.py)
+  - To Update a post first we need to import the <span style="color: Red;">UpdateView</span> in our views.py (copy PostCreateView() codes)
+  - Add new view to url pattern (copy detail path url) and import the new view here
+  - By adding the url pattern Django do everything for us and we don't need to do anything more
+  - New we need to restrict user for updating other users post and we can do it by another Mixin method called <span style="color: Red;">UserPassTestMixin</span>
+  - To run our Mixin method we can define a method <span style="color: Yellow;">(test_func())</span> that check the current user and the post author to allow user to update the post (inside update view)
+  - Try to update another user to show <span style="color: Red;">404 Forbidden</span> error
+  - <span style="color: Orange;">Delete view</span> is very similar to <span style="color: Yellow;">Detail view</span>, so we copy it and we need all Mixin methods and test_func() for Delete view as well
+  - After add new view to url pattern and make new url we need a form for delete confirmation (copy code from <span style="color: Orange;">post_form.html</span>)
   -
