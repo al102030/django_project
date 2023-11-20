@@ -302,4 +302,29 @@
   - To use the create new post ability we should add it to nav bar for each user
   - Now we need to add "**update**" and "**delete**" button to detail pages
 - <span style="color: Red;">Pagination</span>
-  - I
+  - First we need to add some fake post to our site. in order to do that we can use "posts.json" file
+  - ![](NoteImages/6.png)
+  - Add this code <span style="color: Orange;">db_constraint=False</span> to post model and execute <span style="color: #0088ff;">makemigrations</span> and <span style="color: #0088ff;">migrate</span> again if you have problem
+  - Load all data in one page could really slow down our site, so we going to be work with a Django <span style="color: Red;">Paginator Object</spab>
+  - Inside the Django shell train with Paginator object by Import Paginator (<span style="color: Red;">from django.core.paginator import Paginator</span>) after that we should create a dumpy post list
+  - ![](NoteImages/7.png)
+  - ![](NoteImages/8.png)
+  - Inside Home page view within the class based view of home page we should define <span style="color: Blue;">paginate_by</span> variable
+  - check other pages in url (<span style="color: orange;">?page=3</span>)
+  - Our pagination logic should place inside the home page template at the end of the page right after the for loop
+  - We use some if, for statement and Django filter to handel links of the pages
+  - After completing the pagination part of the home page set post per page variable in home view to 5
+  - To separate a specific user posts we need to define a new class based view called (<span style="color: orange;">UserPostListView</span>)
+  - Te get query of a user posts we need to write a method and import a Django shortcut called <span style="color: #0088ff;">get_object_or_404</span> and <span style="color: #0088ff;">User</span> model
+  - So we need to create url in urls.py in blog app and first we should import our new view
+  - Now we need to create a template for our new view (copy all codes from home.html and add a h1 tag and change the username url inside the this template and home and post-detail template)
+- <span style="color: Red;">REST API Introduction</span>
+  - To change your website to give a proper answer to different kind of platforms like Android, IOS, Windows, and different kind of applications, you need to use Django REST API ability
+  - In this case your site responses is a JSON file
+  - First we need the <span style="color: #0088ff;">djangorestframework</span>
+  - Now you should add rest_framework to project setting.py file
+  - Now we need to define a <span style="color: Red;">serializer</span> class inside our blog app (A serializer change a model to JSON or other kind of data)
+  - After that we should write a view for our serializer inside our blog app views.py
+  - Now it's time to make a urlpattern for our serializer inside the project urls.py
+  - now we can check our site in order to get a proper JSON file from it
+  -
