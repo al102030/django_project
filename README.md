@@ -299,4 +299,7 @@
   - Try to update another user to show <span style="color: Red;">404 Forbidden</span> error
   - <span style="color: Orange;">Delete view</span> is very similar to <span style="color: Yellow;">Detail view</span>, so we copy it and we need all Mixin methods and test_func() for Delete view as well
   - After add new view to url pattern and make new url we need a form for delete confirmation (copy code from <span style="color: Orange;">post_form.html</span>)
-  -
+  - To use the create new post ability we should add it to nav bar for each user
+  - Now we need to add "**update**" and "**delete**" button to detail pages
+- <span style="color: Red;">Pagination</span>
+  - I
